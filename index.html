@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Counter</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Word Counter</h1>
+    <p>Only a simple word counter</p>
+    <hr />
+    <p>
+      <span id="word-count">0 word</span>,
+      <span id="char-count">0 character</span>
+    </p>
+    <textarea name="input-text" id="input-text" cols="30" rows="10" autofocus></textarea>
+
+    <script>
+      document
+        .getElementById("input-text")
+        .addEventListener("keyup", function () {
+          let wordArray = document
+            .getElementById("input-text")
+            .value.split(" ")
+            .filter((i) => i);
+          let charArray = document
+            .getElementById("input-text")
+            .value.replace(/ +/g, "")
+            .split("");
+
+          let wordCountDisplay, charCountDisplay;
+
+          wordCountDisplay =
+            wordArray.length > 1
+              ? wordArray.length + " words"
+              : wordArray.length + " word";
+          charCountDisplay =
+            charArray.length > 1
+              ? charArray.length + " characters"
+              : charArray.length + " character";
+
+          document.getElementById("word-count").innerHTML = wordCountDisplay;
+          document.getElementById("char-count").innerHTML = charCountDisplay;
+        });
+    </script>
+  </body>
+</html>
